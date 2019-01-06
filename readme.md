@@ -41,4 +41,4 @@ If you have any feedback the write me or file a ticket.
 
 ## License
 
-Like the reveal.js this project is licensed as MIT License. See [here](./License)
+Like the reveal.js this project is licensed as MIT License. See [here](https://github.com/Samuel3/Reveal_Kotlin/blob/master/LICENSE)
