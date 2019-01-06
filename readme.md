@@ -38,3 +38,7 @@ Currently there is no artifact. But an artifact will be follow soon. I promise ;
 ## Feedback
 
 If you have any feedback the write me or file a ticket.
+
+## License
+
+Like the reveal.js this project is licensed as MIT License. See [here](./License)
