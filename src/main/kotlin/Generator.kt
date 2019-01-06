@@ -94,11 +94,14 @@ fun DIV.slide(slide: Slide) {
         }
         slide.fragments?.forEach {
             p (classes = "fragment ${it.style}"){
-                +it.content
+                unsafe {
+                    +it.content
+                }
             }
         }
-
-        +slide.content
+        unsafe {
+            +slide.content
+        }
         aside(classes = "notes") {
             +slide.notes
         }
