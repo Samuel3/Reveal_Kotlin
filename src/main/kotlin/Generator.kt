@@ -4,11 +4,13 @@ import org.apache.commons.io.FileUtils
 import org.webjars.WebJarAssetLocator
 import java.io.File
 
+// This file contains everything necessary for generating the a presentation.
 class Generator {
 
     fun copyFramework(path: String) {
         val allFiles = WebJarAssetLocator().listAssets("reveal.js")
         allFiles.filter {
+            // Filter files from repo which are not used for a pure presentation.
             !it.endsWith(".md") &&
                     !it.endsWith(".scss") &&
                     !it.endsWith("demo.html") &&

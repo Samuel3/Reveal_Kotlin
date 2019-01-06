@@ -1,6 +1,8 @@
 import com.google.gson.Gson
 import java.io.File
 
+// This file contains the dsl configuration for usage.
+
 data class Presentation(
         var path: File? = null,
         var title: String = "Presentation",
