@@ -1,12 +1,22 @@
 plugins {
     id 'java'
     id 'org.jetbrains.kotlin.jvm' version '1.2.51'
+    id "com.jfrog.bintray" version "1.+"
 }
 
 group 'Presentation'
-version '0.1.0'
+version = System.getenv('VERSION')
 
 sourceCompatibility = 1.8
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+    apply plugin: 'maven'
+    apply plugin: 'maven-publish'
+    apply plugin: 'java'
+}
 
 repositories {
     mavenCentral()
@@ -29,4 +39,33 @@ compileKotlin {
 }
 compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
+}
+
+bintray {
+    user = System.getenv('BINTRAY_USER')
+    key = System.getenv('BINTRAY_KEY')
+    publications = ['MyPublication']
+    pkg {
+        repo = 'revealkt-local'
+        name = 'revealkt'
+        userOrg = 'bintray_user'
+        licenses = ['MIT']
+        vcsUrl = 'https://github.com/Samuel3/Reveal_Kotlin'
+        name = System.getenv('VERSION')
+        desc = 'Kotlin Binding for Reveal.js'
+        released  = new Date()
+        vcsTag = System.getenv('VERSION')
+        attributes = ['Reveal.js': 'Kotlin Binding']
+    }
+}
+
+publishing {
+    publications {
+        MyPublication(MavenPublication) {
+            from components.java
+            groupId 'Presentation'
+            artifactId 'revealkt'
+            version System.getenv('VERSION')
+        }
+    }
 }
