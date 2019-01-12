@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'org.jetbrains.kotlin.jvm' version '1.2.51'
+    id 'jacoco'
 }
 
 group 'Presentation'
@@ -29,4 +30,23 @@ compileKotlin {
 }
 compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
+}
+
+task codeCoverageReport(type: JacocoReport) {
+    executionData fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec")
+
+    subprojects.each {
+        sourceSets it.sourceSets.main
+    }
+
+    reports {
+        xml.enabled true
+        xml.destination "${buildDir}/reports/jacoco/report.xml"
+        html.enabled false
+        csv.enabled false
+    }
+}
+
+codeCoverageReport.dependsOn {
+    subprojects*.test
 }
