@@ -1,5 +1,5 @@
 language: java
-script: ./gradlew build --build-cache -PVERSION=0.1.0 -PBINTRAY_USER=${BINTRAY_USER} -PBINTRAY_KEY=${BINTRAY_KEY}
+script: ./gradlew build --build-cache
 deploy:
   provider: releases
   api_key: ${OAUTH_TOKEN}
