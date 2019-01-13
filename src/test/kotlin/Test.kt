@@ -7,7 +7,7 @@ class Test {
 @Test
 fun test() {
     presentation {
-        path = File("/Users/samuel/Documents/dev/revealJs/reveal.js/test2")
+        path = File("./build/tests/")
 
         configuration {
             slideNumber = false
