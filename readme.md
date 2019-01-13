@@ -1,5 +1,6 @@
 # Reveal Kotlin
 [![Build Status](https://travis-ci.org/Samuel3/Reveal_Kotlin.svg?branch=master)](https://travis-ci.org/Samuel3/Reveal_Kotlin)
+[![codecov](https://codecov.io/gh/Samuel3/Reveal_Kotlin/branch/master/graph/badge.svg)](https://codecov.io/gh/Samuel3/Reveal_Kotlin)
 This is a Kotlin binding for [reveal.js](https://revealjs.com/#/) helping you to create easily reveal.js Presentation and generating the boilerplate
 code for you
 

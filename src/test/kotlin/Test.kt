@@ -1,9 +1,10 @@
+import org.junit.Test
 import java.io.File
 
-fun main(args: Array<String>) {
-    test()
-}
+class Test {
 
+
+@Test
 fun test() {
     presentation {
         path = File("/Users/samuel/Documents/dev/revealJs/reveal.js/test2")
@@ -46,4 +47,4 @@ fun test() {
             }
         }
     }
-}
+}}
