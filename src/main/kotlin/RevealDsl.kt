@@ -8,7 +8,8 @@ data class Presentation(
         var title: String = "Presentation",
         var theme: String = "black",
         var slides: List<Slide>? = null,
-        var configuration: Configuration?
+        var configuration: Configuration?,
+        var customCss: String? = null
 )
 
 data class Slide(
@@ -16,6 +17,7 @@ data class Slide(
         var notes: String,
         var backgroundColor: String?,
         var backgroundImage: String?,
+        var backgroundSize: String = "cover",
         var video: String?,
         var loop: Boolean = false,
         var fragments: List<Fragment>? = null,
@@ -75,6 +77,7 @@ class PresentationBuilder {
     var path: File? = null
     var title: String = "Presentation"
     var theme: String = "black"
+    var customCss: String? = null
 
     private var configuration: Configuration? = null
 
@@ -92,7 +95,7 @@ class PresentationBuilder {
         Generator().copyFramework(path!!.toString())
         val presentation = Presentation(path, title, theme, slides, configuration)
         File(path.toString() + "/index.html").writeText(revealSlides(presentation))
-        return Presentation(title = title, configuration = configuration)
+        return Presentation(title = title, configuration = configuration, customCss = customCss)
     }
 }
 
@@ -142,6 +145,7 @@ class SlideBuilder {
     var content: String = ""
     var notes: String = ""
     var backgroundColor: String? = null
+    var backgroundSize: String = "cover"
     var backgroundImage: String? = null
     var video: String? = null
     var loop: Boolean = false
@@ -156,7 +160,7 @@ class SlideBuilder {
         fragments.addAll(FRAGMENTS().apply(block))
     }
 
-    fun build(): Slide = Slide(content, notes, backgroundColor, backgroundImage, video, loop, fragments, slides)
+    fun build(): Slide = Slide(content, notes, backgroundColor, backgroundImage, backgroundSize, video, loop, fragments, slides)
 }
 
 class FragmentBuilder {

@@ -36,6 +36,9 @@ fun revealSlides(config: Presentation): String {
                 link(rel = "stylesheet", href = "css/reveal.css")
                 link(rel = "stylesheet", href = "css/theme/${config.theme}.css")
                 link(rel = "stylesheet", href = "lib/css/zenburn.css")
+                if (config.customCss != null) {
+                    link(rel = "stylesheet", href = config.customCss!!)
+                }
                 script {
                     +"""
                     var link = document.createElement( 'link' );
@@ -91,8 +94,14 @@ fun DIV.slide(slide: Slide) {
         if (slide.backgroundImage != null) {
             attributes["data-background-image"] = slide.backgroundImage!!
         }
+        if (slide.backgroundSize != "cover") {
+            attributes["data-background-size"] = slide.backgroundSize
+        }
         if (slide.video != null) {
             attributes["data-background-video"] = slide.video!!
+        }
+        unsafe {
+            +slide.content
         }
         slide.fragments?.forEach {
             p (classes = "fragment ${it.style}"){
@@ -100,9 +109,6 @@ fun DIV.slide(slide: Slide) {
                     +it.content
                 }
             }
-        }
-        unsafe {
-            +slide.content
         }
         aside(classes = "notes") {
             +slide.notes
