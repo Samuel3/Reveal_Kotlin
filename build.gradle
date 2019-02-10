@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'org.jetbrains.kotlin.jvm' version '1.2.51'
     id 'jacoco'
+    id 'maven'
 }
 
 group 'Presentation'
@@ -43,5 +44,24 @@ task codeCoverageReport(type: JacocoReport) {
         csv.enabled false
     }
 }
+
+task writeNewPom {
+    doLast {
+        pom {
+            project {
+                inceptionYear '2019'
+                licenses {
+                    license {
+                        name 'MIT'
+                        url 'https://opensource.org/licenses/MIT'
+                        distribution 'revealkt-local'
+                    }
+                }
+            }
+        }.writeTo("$buildDir/pom.xml")
+    }
+}
+
+writeNewPom.dependsOn(build)
 
 codeCoverageReport.dependsOn(test)
