@@ -1,8 +1,24 @@
 # Reveal Kotlin
+[![Download](https://api.bintray.com/packages/samuel3/revealkt-local/revealkt/images/download.svg?version=0.1.0) ](https://bintray.com/samuel3/revealkt-local/revealkt/0.1.0/link)
 [![Build Status](https://travis-ci.org/Samuel3/Reveal_Kotlin.svg?branch=master)](https://travis-ci.org/Samuel3/Reveal_Kotlin)
 [![codecov](https://codecov.io/gh/Samuel3/Reveal_Kotlin/branch/master/graph/badge.svg)](https://codecov.io/gh/Samuel3/Reveal_Kotlin)
+
 This is a Kotlin binding for [reveal.js](https://revealjs.com/#/) helping you to create easily reveal.js Presentation and generating the boilerplate
 code for you
+
+## Include
+`Gradle`
+```
+repositories {
+	maven {
+		url  "https://dl.bintray.com/samuel3/revealkt-local"
+	}
+}
+
+dependencies {
+    compile 'revealkt:presentation:0.1.0'
+}
+```
 
 ## Usage
 ```
