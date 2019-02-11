@@ -62,6 +62,6 @@ task writeNewPom {
     }
 }
 
-writeNewPom.dependsOn(build)
+build.dependsOn(writeNewPom)
 
 codeCoverageReport.dependsOn(test)
